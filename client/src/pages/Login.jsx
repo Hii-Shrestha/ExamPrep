@@ -4,6 +4,8 @@ import loginImage from "../assets/images/login1.png";
 import { Link } from "react-router";
 import { GoogleLogin } from "@react-oauth/google";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Login = () => {
   const [data, setData] = useState({
     email: "",
@@ -18,7 +20,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/examinee/login", data);
+      const res = await axios.post(`${API_URL}/api/examinee/login`, data);
 
       if (res.data.message === "Login Successfully") {
         localStorage.setItem("userRole", res.data.user.role);

@@ -1,12 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Result = () => {
   const [data, setData] = useState([])
   const userId = localStorage.getItem('userId')
 
   const handlefetch = async () => {
-    const res = await axios.get(`http://localhost:5000/api/exams/examinee-result/${userId}`);
+    const res = await axios.get(`${API_URL}/api/exams/examinee-result/${userId}`);
     setData(Array.isArray(res.data.message) ? res.data.message : [res.data.message]);
   }
 

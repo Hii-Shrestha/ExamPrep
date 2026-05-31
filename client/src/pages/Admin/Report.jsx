@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Report = () => {
   const [data, setData] = useState([]);
 
   const handlefetch = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/exams/report');
+      const res = await axios.get(`${API_URL}/api/exams/report`);
       setData(res.data);
     } catch (er) {
       alert("Sorry, fetching reports failed");

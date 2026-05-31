@@ -3,6 +3,8 @@ import axios from 'axios';
 import { GoogleLogin } from '@react-oauth/google';
 import { Link } from 'react-router';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AdminLogin = () => {
     const [form, setForm] = useState({
         email: '',
@@ -17,7 +19,7 @@ const AdminLogin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:5000/api/admin/login', form);
+        const res = await axios.post(`${API_URL}/api/admin/login`, form);
 
         if (res.data.message === "Login Successfully") {
             localStorage.setItem("role", res.data.admin.role);
@@ -230,7 +232,7 @@ const AdminLogin = () => {
         onSuccess={credentialResponse => {
             console.log("Login Success:", credentialResponse);
             // Yahan par aapko apna backend API call karna hoga
-            // Eg: axios.post('http://localhost:5000/api/admin/google-login', { token: credentialResponse.credential })
+            Eg: axios.post(`${API_URL}/api/admin/google-login`, { token: credentialResponse.credential })
         }}
         onError={() => {
             console.log('Login Failed');

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaUsers, FaBook, FaClipboardList } from "react-icons/fa";
 import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AdminHome = () => {
   const [data, setData] = useState({});
   const [recentExams, setRecentExams] = useState([]);
@@ -14,8 +17,8 @@ const AdminHome = () => {
   const [dataExams, setDataExams] = useState([])
   const handlefetch = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/dashboard/");
-      const res =  await axios.get('http://localhost:5000/api/exams/exams');
+      const response = await fetch(`${API_URL}/api/dashboard/`);
+      const res =  await axios.get(`${API_URL}/api/exams/exams`);
       setDataExams(res.data)
       const result = await response.json();
       setData(result);

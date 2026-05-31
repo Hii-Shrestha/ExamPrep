@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AdminSignup = () => {
   const [data, setData] = useState({ name: "", email: "", password: "" });
   const [width, setWidth] = useState(window.innerWidth);
@@ -24,7 +26,7 @@ const AdminSignup = () => {
     e.preventDefault();
     try {
       // Backend ke sahi route par request bheji
-      await axios.post("http://localhost:5000/api/admin/signup", data);
+      await axios.post(`${API_URL}/api/admin/signup`, data);
       alert("Admin Registered Successfully!");
       navigate("/admin"); // Success hone par login page par bhej rahe hain
     } catch (error) {

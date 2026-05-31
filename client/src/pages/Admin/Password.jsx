@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Password = () => {
    const email = localStorage.getItem('email');
     const[data , formData] = useState({
@@ -18,7 +20,7 @@ const Password = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try{
-            const res =await axios.put(`http://localhost:5000/api/admin/change/${email}`,data);
+            const res =await axios.put(`${API_URL}/api/admin/change/${email}`,data);
             if(res){
                 alert(res.data.message);
                 if(res.data.message==="password changed successfully"){

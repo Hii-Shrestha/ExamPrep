@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const UserHome = () => {
   const examineId = localStorage.getItem('userId');
   const [data, setData] = React.useState(0);   // exams count
@@ -10,7 +12,7 @@ const UserHome = () => {
 
   const handlefetch = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/dashboard/exams/${examineId}`);
+      const response = await fetch(`${API_URL}/api/dashboard/exams/${examineId}`);
       const result = await response.json();
       console.log("Exams API Response:", result);
 
@@ -21,7 +23,7 @@ const UserHome = () => {
         setExamMsg(result.message || "");
       }
 
-      const res = await axios.get(`http://localhost:5000/api/dashboard/examinee-result/${examineId}`);
+      const res = await axios.get(`${API_URL}/api/dashboard/examinee-result/${examineId}`);
       console.log("Result API Response:", res.data);
 
       if (typeof res.data.message === "number") {

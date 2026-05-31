@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Profile.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Profile = () => {
   const [personalEdit, setPersonalEdit] = useState(false);
   const [addressEdit, setAddressEdit] = useState(false);
@@ -32,13 +34,13 @@ const Profile = () => {
   useEffect(() => {
     const fetchExaminee = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/examinee/${examineeId}`);
+        const res = await axios.get(`${API_URL}/api/examinee/${examineeId}`);
         console.log(res.data.data);
         
         if (res.data) {
           setFormData(res.data.data);
           if (res.data.profileImage) {
-            setProfilePic(`http://localhost:5000/uploads/${res.data.profileImage}`);
+            setProfilePic(`${API_URL}/uploads/${res.data.profileImage}`);
           }
         }
       } catch (err) {
@@ -75,7 +77,7 @@ const Profile = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/examinee/${examineeId}`,
+        `${API_URL}/api/examinee/${examineeId}`,
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
