@@ -1,0 +1,36 @@
+/* index.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden; /* Screen se bahar content jane se rokein */
+  width: 100%;
+}
+
+/* Sabhi images ko responsive banayein */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* responsive.css */
+/* Mobile (Portrait) */
+@media (max-width: 768px) {
+  /* Card ko column mein badalna */
+  div[style*="display: flex"][style*="flex-direction: row"] {
+    flex-direction: column !important;
+  }
+
+  /* Right Panel (Form) ko saaf dikhane ke liye */
+  div[style*="padding: 30px"] {
+    padding: 20px !important;
+  }
+
+  /* Image ko chhota karna taaki sab dikhe */
+  img {
+    max-width: 150px !important;
+  }
+}
