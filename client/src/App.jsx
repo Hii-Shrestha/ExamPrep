@@ -11,7 +11,7 @@ import Examinee from "./pages/Admin/Examinee";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminSignup from "./pages/Admin/AdminSignup";
 import QuestionBank from "./pages/Admin/QuestionBank";
-import UserDash from "./pages/User/Userdash";
+import UserDash from "./pages/User/UserDash";
 import Examination from "./pages/Admin/Examination";
 import Report from "./pages/Admin/Report";
 import Contact from "./pages/Admin/Contact";
